@@ -67,10 +67,10 @@ class Comment(db.Model, UserMixin):
     post_id = db.Column(db.Integer, db.ForeignKey('blog_posts.id'), nullable=False)
     post = db.relationship('BlogPost', back_populates="comments")
 
-with app.app_context():
-    inspector = inspect(db.engine)
-    if not inspector.has_table('blog_posts') and not inspector.has_table('blog_users'):
-        db.create_all()
+# with app.app_context():
+#     inspector = inspect(db.engine)
+#     if not inspector.has_table('blog_posts') and not inspector.has_table('blog_users'):
+#         db.create_all()
 
 
 @login_manager.user_loader
